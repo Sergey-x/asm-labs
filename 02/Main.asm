@@ -6,25 +6,24 @@ include 'win32a.inc'  ; подключаем библиотеку FASM-а
 
 
 section '.data' data readable writable  ; секция данных
-    inputMsgA db 'Enter a: ', 0
-    inputMsgX db 'Enter x: ', 0
-    inputFormat db '%lf', 0
-    outputResult db 'y = (y1 - y2) = %f', 10, 0
-    XE db 'x = %f  ', 0
+    inputMsgA       db 'Enter a: ', 0
+    inputMsgX       db 'Enter x: ', 0
+    inputFormat     db '%lf', 0
+    outputResult    db 'y = (y1 - y2) = %f', 10, 0
+    XE  db 'x = %f  ', 0
     Y2E db 'y2 = %f  ', 10, 0
     Y1E db 'y1 = %f  ', 10, 0
-    TWO dq 2.0
-    ONE dq 1.0
-    NEGONE dq -1.0
-    ZERO dq 0.0
+    TWO     dq 2.0
+    ONE     dq 1.0
+    ZERO    dq 0.0
     
     
 section '.bss' readable writeable
-    a  dq ?
-    x  dq ?
+    a   dq ?
+    x   dq ?
     y1  dq ?
     y2  dq ?
-    y  dq ?
+    y   dq ?
   
   
 section '.code' code readable executable ; секция кода
@@ -50,14 +49,14 @@ Start:
             fmul qword ptr TWO  ; st0 = 2*x
             fstp qword ptr y1   ; y1 = 2*x
             
-            fld qword ptr x
             fld qword ptr TWO
+            fld qword ptr x
             fcomi st1
-            fstp qword ptr TWO
             fstp qword ptr x
+            fstp qword ptr TWO
             fld qword ptr y1
-            ja xLessEq2
-            jmp xMore2
+            ja xMore2
+            jmp xLessEq2
             
             xMore2:
                 fadd qword ptr a ; y1 = 2*x + a
@@ -74,13 +73,13 @@ Start:
                 pop ecx               
 
         EvalY2:
-            fld qword ptr x
             fld qword ptr ZERO
+            fld qword ptr x
             fcomi st1
-            fstp qword ptr ZERO
             fstp qword ptr x
-            ja xLessEqZero
-            jmp xMoreZero
+            fstp qword ptr ZERO
+            ja xMoreZero
+            jmp xLessEqZero
             
             xLessEqZero:
                 fld qword ptr a
