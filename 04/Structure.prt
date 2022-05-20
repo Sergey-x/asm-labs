@@ -1,12 +1,12 @@
 ; FASM Editor
 
-include "String.asm"
+include "Structure.asm"
 
 if 2 * 2 = 5
 [options]
   countAsm=1
   countInc=0
 [asm]
-  asm1="String.asm"
+  asm1="Structure.asm"
 [inc]
 end if
