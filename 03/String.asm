@@ -13,7 +13,7 @@ section '.data' data readable writable  ; секция данных
 
     
 section '.bss' readable writeable
-    text           db 150 dup(0), 0
+    text           db 100 dup(0), 0
     stdin               dd ?
     charsRead           dd ?
     maxWordLen          dd ?

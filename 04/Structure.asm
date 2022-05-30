@@ -11,7 +11,7 @@ section '.data' data readable writable  ; секция данных
     inpFD            dd ?
     outFD            dd ?
        
-    firstnameFmt     db "firstname = %s",  0
+    firstnameFmt     db "firstname = %s", 0
     secondnameFmt    db "secondname = %s", 0
     patronymicFmt    db "patronymic = %s", 0
     categoryFmt      db "category = %d;", 10, 10, 0

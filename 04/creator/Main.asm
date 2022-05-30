@@ -47,7 +47,7 @@ Start:
     invoke CreateFile, outputFile, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, 0, 0
     mov [outFD], eax
     
-    cinvoke printf, intFmt, [sizeOfWelder]
+    ;cinvoke printf, intFmt, [sizeOfWelder]
     
     mov ebx, 0
     WelderIter:
